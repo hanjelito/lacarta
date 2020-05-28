@@ -4,19 +4,21 @@ import 'package:resto/src/widgets/detail/detail_widget.dart';
 class DetallePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        _crearAppbar(),
-        SliverFixedExtentList(
-          itemExtent: 50,
-          delegate: SliverChildListDelegate([
-            Container(color: Colors.red),
-            Container(color: Colors.green),
-            Container(color: Colors.blue),
-          ]),
-        ),
-        DetailWidget()
-      ],
+    return Scaffold(
+          body: CustomScrollView(
+        slivers: <Widget>[
+          _crearAppbar(),
+          SliverFixedExtentList(
+            itemExtent: 50,
+            delegate: SliverChildListDelegate([
+              Container(color: Colors.red),
+              Container(color: Colors.green),
+              Container(color: Colors.blue),
+            ]),
+          ),
+          DetailWidget()
+        ],
+      ),
     );
   }
   Widget _crearAppbar() {
