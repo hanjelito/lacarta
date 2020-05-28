@@ -23,10 +23,10 @@ class DetailWidget extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           return Container(
-            height: 50,
-            alignment: Alignment.center,
-            color: Colors.orange[100 * (index % 9)],
-            child: Text(datos[index].name),
+            // height: 50,
+            // alignment: Alignment.center,
+            // color: Colors.orange[100 * (index % 9)],
+            // child: Text(datos[index].name),
           );
         },
         childCount: datos.length,
