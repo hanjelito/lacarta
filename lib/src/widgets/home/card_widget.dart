@@ -4,16 +4,13 @@ import 'package:resto/src/providers/resto.dart';
 
 class CardWidget extends StatelessWidget {
   final List<Restos> datos = [
-    Restos(1, "http", "http://ialab.io", "La Caña", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 700, 1),
-    Restos(2, "http", "http://ialab.io", "Salero", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 20, 2),
-    Restos(3, "http", "http://ialab.io", "Burger King", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 45, 3),
-    Restos(4, "http", "http://ialab.io", "Malasaña", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 70, 4),
-    Restos(5, "http", "http://ialab.io", "Ratejo", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 800, 5),
+    Restos(1, "http", "http://ialab.io", "La Caña", "La mejorcomida hindú", "indio.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "Don Sushi", "Lo mejor en sushi", "tapa.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "El turko", "Los mejores sandiwsh", "kebap.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "KFC", "El mejor pollo crocante", "kfc.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "Burguer King", "Hamburguesas familiares", "king.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "El Parrillero", "Los Mejores Cortes", "parrillero.jpg", "asas/kjs.jpg", 700, 1, 2.4),
+    Restos(1, "http", "http://ialab.io", "La Italiana", "La mejor pasta", "imagen1.jpg", "asas/kjs.jpg", 700, 1, 2.4),
 
     // "Madrid", "Las Talbas", "Fuencarral", "Coslada"
   ];
@@ -50,7 +47,7 @@ class CardWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: new FadeInImage(
-                              image: AssetImage('assets/image/tapa.jpg'),
+                              image: AssetImage('assets/image/'+resto.image),
                               placeholder:
                                   AssetImage('assets/image/no-image.png'),
                               height: 180.0,
@@ -65,9 +62,9 @@ class CardWidget extends StatelessWidget {
                                   children: <Widget>[
                                     Text(
                                       resto.name,
-                                      style: GoogleFonts.pacifico(
+                                      style: GoogleFonts.karla(
                                         textStyle: TextStyle(
-                                          fontSize: 40.0,
+                                          fontSize: 45.0,
                                           color: Colors.white,
                                           //fontWeight: FontWeight.bold,
                                           shadows: <Shadow>[
@@ -86,7 +83,7 @@ class CardWidget extends StatelessWidget {
                                           EdgeInsets.only(left: 10, right: 10),
                                       color: Colors.grey.withOpacity(0.5),
                                       child: Text(
-                                        resto.name,
+                                        resto.description,
                                         style: GoogleFonts.sourceSansPro(
                                           textStyle: TextStyle(
                                             fontSize: 20.0,

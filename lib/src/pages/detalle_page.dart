@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:resto/src/widgets/detail/detail_widget.dart';
+import 'package:resto/src/widgets/detail/carddetalle_widget.dart';
+import 'package:resto/src/widgets/detail/category_widget.dart';
+// import 'package:resto/src/widgets/detail/detail_widget.dart';
 
 class DetallePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: CustomScrollView(
+      body: CustomScrollView(
         slivers: <Widget>[
           _crearAppbar(),
+          CategoryWidget(),
           SliverFixedExtentList(
             itemExtent: 50,
             delegate: SliverChildListDelegate([
-              Container(color: Colors.red),
               Container(color: Colors.green),
               Container(color: Colors.blue),
             ]),
           ),
-          DetailWidget()
+          CarddetalleWidget(),
+          //DetailWidget(),
+          
         ],
       ),
     );
   }
+
   Widget _crearAppbar() {
     return SliverAppBar(
       elevation: 2.0,

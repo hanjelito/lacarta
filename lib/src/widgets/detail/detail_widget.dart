@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:resto/src/providers/resto.dart';
 
 class DetailWidget extends StatelessWidget {
-  final List<Restos> datos = [
+    final List<Restos> datos = [
     Restos(1, "http", "http://ialab.io", "La Caña", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 700, 1),
+        "asas/kjs.jpg", "asas/kjs.jpg", 700, 1, 2.4),
     Restos(2, "http", "http://ialab.io", "Salero", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 20, 2),
+        "asas/kjs.jpg", "asas/kjs.jpg", 20, 2, 20.2),
     Restos(3, "http", "http://ialab.io", "Burger King", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 45, 3),
+        "asas/kjs.jpg", "asas/kjs.jpg", 45, 3, 6.7),
     Restos(4, "http", "http://ialab.io", "Malasaña", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 70, 4),
+        "asas/kjs.jpg", "asas/kjs.jpg", 70, 4, 3.7),
     Restos(5, "http", "http://ialab.io", "Ratejo", "el mejor de todos",
-        "asas/kjs.jpg", "asas/kjs.jpg", 800, 5),
+        "asas/kjs.jpg", "asas/kjs.jpg", 800, 5, 3.2),
 
     // "Madrid", "Las Talbas", "Fuencarral", "Coslada"
   ];

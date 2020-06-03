@@ -8,6 +8,7 @@ class Restos {
     String logo;
     int distancia;
     int category;
+    double costo;
 
     // Restos(String s, {
     //     this.id,
@@ -30,6 +31,7 @@ class Restos {
         this.logo,
         this.distancia,
         this.category,
+        this.costo,
     );
 
     // factory Restos.fromJson(Map<String, dynamic> json) => Restos(

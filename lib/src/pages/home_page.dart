@@ -1,7 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'package:resto/src/providers/restos_provider.dart';
 
 import 'package:resto/src/widgets/home/card_widget.dart';
 
@@ -27,6 +27,8 @@ class HomePage extends StatelessWidget {
   }
   Widget _crearBottomNavigationBar()
   {
+    final restosProvider = RestosProvider();
+    restosProvider.getOnline();
     return BottomNavigationBar(
       //le dice a la barra que elementos tiene activo
       onTap: (index){
