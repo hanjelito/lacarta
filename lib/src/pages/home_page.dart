@@ -7,13 +7,13 @@ import 'package:resto/src/widgets/home/card_widget.dart';
 
 class HomePage extends StatelessWidget {
 
-
+  final restosProvider = RestosProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
           children: <Widget>[
-            CardWidget(),
+            _cardWidget(),
           ],
       ),
       bottomNavigationBar: _crearBottomNavigationBar(),
@@ -25,10 +25,23 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _cardWidget() {
+    return FutureBuilder(
+      future: restosProvider.getOnline(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          if(snapshot.hasData){
+            return CardWidget(restos: snapshot.data);
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        }
+    );
+  }
+
   Widget _crearBottomNavigationBar()
   {
-    final restosProvider = RestosProvider();
-    restosProvider.getOnline();
+    
     return BottomNavigationBar(
       //le dice a la barra que elementos tiene activo
       onTap: (index){

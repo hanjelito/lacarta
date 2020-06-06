@@ -13,8 +13,10 @@ class RestosProvider {
 
     final resp = await http.get(url);
     final decodeData = json.decode(resp.body);
-    print(decodeData);
-    return[];
+    final restos = new Restos.fromJsonList(decodeData);
+    
+    // print(restos.items.length);
+    return restos.items;
   }
 
 }
