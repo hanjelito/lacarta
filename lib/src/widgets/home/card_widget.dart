@@ -18,7 +18,7 @@ class CardWidget extends StatelessWidget {
                   Navigator.pushNamed(context, 'detalle');
                 },
                 child: Card(
-                  margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                  margin: EdgeInsets.fromLTRB(15, 10, 20, 0),
                   elevation: 2.0,
                   child: Column(
                     children: <Widget>[
@@ -48,9 +48,9 @@ class CardWidget extends StatelessWidget {
                                       children: <Widget>[
                                         Text(
                                           restos[index].name,
-                                          style: GoogleFonts.roboto(
+                                          style: GoogleFonts.robotoSlab(
                                             textStyle: TextStyle(
-                                              fontSize: 45.0,
+                                              fontSize: 40.0,
                                               color: Colors.white,
                                               //fontWeight: FontWeight.bold,
                                               shadows: <Shadow>[
