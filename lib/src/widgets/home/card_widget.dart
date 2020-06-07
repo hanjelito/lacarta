@@ -48,7 +48,7 @@ class CardWidget extends StatelessWidget {
                                       children: <Widget>[
                                         Text(
                                           restos[index].name,
-                                          style: GoogleFonts.karla(
+                                          style: GoogleFonts.roboto(
                                             textStyle: TextStyle(
                                               fontSize: 45.0,
                                               color: Colors.white,
