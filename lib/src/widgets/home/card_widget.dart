@@ -1,21 +1,23 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:resto/src/models/resto_model.dart';
 
 class CardWidget extends StatelessWidget {
-  final List<dynamic> restos;
+  final List<Resto>restos;
 
   CardWidget({@required this.restos});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return new ListView.builder(
         itemCount: restos.length,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'detalle');
+                  Navigator.pushNamed(context, 'detalle', arguments: restos[index]);
                 },
                 child: Card(
                   margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -32,11 +34,14 @@ class CardWidget extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: new FadeInImage(
+                                    width: 1200,
+                                    height: 180.0,
                                     image:
-                                        AssetImage('assets/image/imagen1.jpg'),
+                                        NetworkImage(restos[index].getCoverImg()),
+                                        // AssetImage('assets/image/imagen1.jpg'),
                                     placeholder:
                                         AssetImage('assets/image/no-image.png'),
-                                    height: 180.0,
+                                    // height: 180.0,
                                     //width: 600,
                                     fit: BoxFit.cover,
                                   ),
@@ -50,7 +55,7 @@ class CardWidget extends StatelessWidget {
                                           restos[index].name,
                                           style: GoogleFonts.karla(
                                             textStyle: TextStyle(
-                                              fontSize: 45.0,
+                                              fontSize: 35.0,
                                               color: Colors.white,
                                               //fontWeight: FontWeight.bold,
                                               shadows: <Shadow>[
@@ -63,6 +68,7 @@ class CardWidget extends StatelessWidget {
                                               ],
                                             ),
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                         Container(
                                           padding: EdgeInsets.only(
@@ -100,16 +106,27 @@ class CardWidget extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 5.0),
                         Text(
-                          'Madrid (10m)',
-                          style: GoogleFonts.sourceSansPro(
-                              textStyle: TextStyle(fontSize: 18.0),
-                              fontSize: 21),
+                          restos[index].getDecodeUtf8(),
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.caption,
+                          // style: GoogleFonts.sourceSansPro(
+                          //     textStyle: TextStyle(fontSize: 18.0),
+                          //     fontSize: 21),
                         ),
                         Spacer(),
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                        Text(
+                          restos[index].getValorizar(),
+                          overflow: TextOverflow.ellipsis,
+                          
+                          // style: GoogleFonts.sourceSansPro(
+                          //     textStyle: TextStyle(fontSize: 18.0),
+                          //     fontSize: 21),
                         ),
+                        Icon(
+                          Icons.star,
+                          size: 20.0,
+                          color: Colors.red,
+                        )
                       ],
                     ),
                   ),

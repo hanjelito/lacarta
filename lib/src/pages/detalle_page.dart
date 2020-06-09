@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resto/src/models/resto_model.dart';
 import 'package:resto/src/widgets/detail/carddetalle_widget.dart';
 import 'package:resto/src/widgets/detail/category_widget.dart';
 // import 'package:resto/src/widgets/detail/detail_widget.dart';
@@ -6,10 +7,11 @@ import 'package:resto/src/widgets/detail/category_widget.dart';
 class DetallePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Resto resto = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          _crearAppbar(),
+          _crearAppbar(resto),
           CategoryWidget(),
           SliverFixedExtentList(
             itemExtent: 50,
@@ -26,7 +28,7 @@ class DetallePage extends StatelessWidget {
     );
   }
 
-  Widget _crearAppbar() {
+  Widget _crearAppbar(resto) {
     return SliverAppBar(
       elevation: 2.0,
       backgroundColor: Colors.indigo,
@@ -35,10 +37,12 @@ class DetallePage extends StatelessWidget {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        title: Text('La Caña',
+        title: Text(resto.name,
             style: TextStyle(color: Colors.white, fontSize: 16.0)),
         background: FadeInImage(
-          image: AssetImage('assets/image/page1.jpg'),
+          image: 
+            NetworkImage(resto.getCoverImg()),
+            //AssetImage('assets/image/page1.jpg'),
           placeholder: AssetImage('assets/image/no-image.png'),
           fit: BoxFit.cover,
         ),

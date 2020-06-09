@@ -4,7 +4,7 @@ import 'package:resto/src/providers/resto.dart';
 
 class CarddetalleWidget extends StatelessWidget {
   final List<Restos> datos = [
-    Restos(1, "http", "http://ialab.io", "La Caña", "el mejor de todos",
+    Restos(1, "http", "http://ialab.io", "La Cañas", "el mejor de todos",
         "asas/kjs.jpg", "asas/kjs.jpg", 700, 1, 2.4),
     Restos(2, "http", "http://ialab.io", "Salero", "el mejor de todos",
         "asas/kjs.jpg", "asas/kjs.jpg", 20, 2, 20.2),
