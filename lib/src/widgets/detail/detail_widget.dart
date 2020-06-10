@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resto/src/providers/resto.dart';
+
 
 class DetailWidget extends StatelessWidget {
 

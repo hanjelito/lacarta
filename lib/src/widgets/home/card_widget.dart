@@ -1,12 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resto/src/models/resto_model.dart';
 
 class CardWidget extends StatelessWidget {
-  final List<Resto>restos;
+  final List<Resto> restos;
+  
 
   CardWidget({@required this.restos});
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,8 @@ class CardWidget extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'detalle', arguments: restos[index]);
+                  Navigator.pushNamed(context, 'detalle',
+                      arguments: restos[index]);
                 },
                 child: Card(
                   margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -36,9 +40,9 @@ class CardWidget extends StatelessWidget {
                                   child: new FadeInImage(
                                     width: 1200,
                                     height: 180.0,
-                                    image:
-                                        NetworkImage(restos[index].getCoverImg()),
-                                        // AssetImage('assets/image/imagen1.jpg'),
+                                    image: NetworkImage(
+                                        restos[index].getCoverImg()),
+                                    // AssetImage('assets/image/imagen1.jpg'),
                                     placeholder:
                                         AssetImage('assets/image/no-image.png'),
                                     // height: 180.0,
@@ -61,7 +65,7 @@ class CardWidget extends StatelessWidget {
                                               shadows: <Shadow>[
                                                 Shadow(
                                                   offset: Offset(2.0, 2.0),
-                                                  blurRadius: 3.0,
+                                                  blurRadius: 2.0,
                                                   color: Color.fromARGB(
                                                       255, 0, 0, 0),
                                                 ),
@@ -75,7 +79,8 @@ class CardWidget extends StatelessWidget {
                                               left: 10, right: 10),
                                           color: Colors.grey.withOpacity(0.5),
                                           child: Text(
-                                            restos[index].description,
+                                            restos[index].getDecodeUtf8(),
+                                            // restos[index].description,
                                             style: GoogleFonts.sourceSansPro(
                                               textStyle: TextStyle(
                                                 fontSize: 20.0,
@@ -106,7 +111,7 @@ class CardWidget extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 5.0),
                         Text(
-                          restos[index].getDecodeUtf8(),
+                          restos[index].getLatMeter(),
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption,
                           // style: GoogleFonts.sourceSansPro(
@@ -117,7 +122,7 @@ class CardWidget extends StatelessWidget {
                         Text(
                           restos[index].getValorizar(),
                           overflow: TextOverflow.ellipsis,
-                          
+
                           // style: GoogleFonts.sourceSansPro(
                           //     textStyle: TextStyle(fontSize: 18.0),
                           //     fontSize: 21),
