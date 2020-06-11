@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resto/src/models/resto_model.dart';
 
@@ -57,7 +56,7 @@ class CardWidget extends StatelessWidget {
                                       children: <Widget>[
                                         Text(
                                           restos[index].name,
-                                          style: GoogleFonts.karla(
+                                          style: GoogleFonts.robotoSlab(
                                             textStyle: TextStyle(
                                               fontSize: 35.0,
                                               color: Colors.white,
@@ -65,9 +64,9 @@ class CardWidget extends StatelessWidget {
                                               shadows: <Shadow>[
                                                 Shadow(
                                                   offset: Offset(2.0, 2.0),
-                                                  blurRadius: 2.0,
+                                                  blurRadius: 1.0,
                                                   color: Color.fromARGB(
-                                                      255, 0, 0, 0),
+                                                      254, 0, 0, 0),
                                                 ),
                                               ],
                                             ),
@@ -111,7 +110,7 @@ class CardWidget extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 5.0),
                         Text(
-                          restos[index].getLatMeter(),
+                          restos[index].getLatMeter().toString(),
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption,
                           // style: GoogleFonts.sourceSansPro(
@@ -122,7 +121,6 @@ class CardWidget extends StatelessWidget {
                         Text(
                           restos[index].getValorizar(),
                           overflow: TextOverflow.ellipsis,
-
                           // style: GoogleFonts.sourceSansPro(
                           //     textStyle: TextStyle(fontSize: 18.0),
                           //     fontSize: 21),
@@ -131,7 +129,7 @@ class CardWidget extends StatelessWidget {
                           Icons.star,
                           size: 20.0,
                           color: Colors.red,
-                        )
+                        ),
                       ],
                     ),
                   ),
