@@ -8,7 +8,11 @@ class RestosProvider {
   String _url = 'ialab.io:3000';
 
   Future<List<Resto>> getOnline() async {
-    final url = Uri.http(_url, 'clients', {'Content-type': 'application/json'});
+    final url = Uri.http(_url, 'clients', {
+      'Content-type': 'application/json',
+      'filter[limit]': '20',
+      'filter[skip]': '0'
+    });
 
     final resp = await http.get(url);
     final decodeData = json.decode(utf8.decode(resp.bodyBytes));

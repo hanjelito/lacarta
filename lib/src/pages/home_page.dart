@@ -63,7 +63,8 @@ class HomePage extends StatelessWidget {
 
   Widget _crearBottomNavigationBar()
   {
-    
+    // Navigator.pushNamed(context, 'detalle',
+    //                   arguments: widget.restos[index]);
     return BottomNavigationBar(
       //le dice a la barra que elementos tiene activo
       onTap: (index){
@@ -72,6 +73,7 @@ class HomePage extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(MdiIcons.mapMarkerDistance),
           title: Text('Cerca'),
+          
         ),
         BottomNavigationBarItem(
           icon: Icon(MdiIcons.faceProfile),

@@ -3,25 +3,31 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resto/src/models/resto_model.dart';
 
-class CardWidget extends StatelessWidget {
+class CardWidget extends StatefulWidget {
   final List<Resto> restos;
-  
 
   CardWidget({@required this.restos});
 
+  @override
+  _CardWidgetState createState() => _CardWidgetState();
+}
+
+class _CardWidgetState extends State<CardWidget> {
   
+  Position _currentPosition;
 
   @override
   Widget build(BuildContext context) {
     return new ListView.builder(
-        itemCount: restos.length,
+        itemCount: widget.restos.length,
         itemBuilder: (BuildContext context, int index) {
+          _getCurrentLocation();
           return Column(
             children: <Widget>[
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, 'detalle',
-                      arguments: restos[index]);
+                      arguments: widget.restos[index]);
                 },
                 child: Card(
                   margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -41,7 +47,7 @@ class CardWidget extends StatelessWidget {
                                     width: 1200,
                                     height: 180.0,
                                     image: NetworkImage(
-                                        restos[index].getCoverImg()),
+                                        widget.restos[index].getCoverImg()),
                                     // AssetImage('assets/image/imagen1.jpg'),
                                     placeholder:
                                         AssetImage('assets/image/no-image.png'),
@@ -56,7 +62,7 @@ class CardWidget extends StatelessWidget {
                                     child: Column(
                                       children: <Widget>[
                                         Text(
-                                          restos[index].name,
+                                          widget.restos[index].name,
                                           style: GoogleFonts.karla(
                                             textStyle: TextStyle(
                                               fontSize: 35.0,
@@ -79,7 +85,8 @@ class CardWidget extends StatelessWidget {
                                               left: 10, right: 10),
                                           color: Colors.grey.withOpacity(0.5),
                                           child: Text(
-                                            restos[index].getDecodeUtf8(),
+                                            widget.restos[index]
+                                                .getDecodeUtf8(),
                                             // restos[index].description,
                                             style: GoogleFonts.sourceSansPro(
                                               textStyle: TextStyle(
@@ -111,7 +118,8 @@ class CardWidget extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 5.0),
                         Text(
-                          restos[index].getLatMeter(),
+                          //"LAT: ${_currentPosition.latitude}, LNG: ${_currentPosition.longitude}",
+                          widget.restos[index].getLatMeter(_currentPosition.latitude, _currentPosition.longitude),
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption,
                           // style: GoogleFonts.sourceSansPro(
@@ -120,7 +128,7 @@ class CardWidget extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          restos[index].getValorizar(),
+                          widget.restos[index].getValorizar(),
                           overflow: TextOverflow.ellipsis,
 
                           // style: GoogleFonts.sourceSansPro(
@@ -140,5 +148,18 @@ class CardWidget extends StatelessWidget {
             ],
           );
         });
+  }
+  _getCurrentLocation() {
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+    geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+      });
+    }).catchError((e) {
+      print(e);
+    });
   }
 }

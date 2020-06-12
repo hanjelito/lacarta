@@ -99,11 +99,11 @@ class Resto {
     return cali.toString();
   }
 
-  getLatMeter() {
+  getLatMeter(lt, ln) {
     var lat1 = lat;
     var lng1 = lng;
-    var lat2 = 40.490220;
-    var lng2 = -3.881900;
+    var lat2 = lt;
+    var lng2 = ln;
     var p = 0.017453292519943295;
     var c = cos;
     var a = 0.5 -
