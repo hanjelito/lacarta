@@ -4,29 +4,29 @@ import 'package:resto/src/models/resto_model.dart';
 import 'package:latlong/latlong.dart';
 
 
-class MapPage extends StatelessWidget {
+class MapDetallePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
+    final Resto resto = ModalRoute.of(context).settings.arguments;
     //final ScanModel scan = ModalRoute.of(context).settings.arguments;
     
     return Scaffold(
       appBar: AppBar(
-        title: Text("Todos"),
+        title: Text(resto.name),
       ),
-      body: _crearFlutterMap(),
+      body: _crearFlutterMap(resto),
     );
   }
-  Widget _crearFlutterMap(){
+  Widget _crearFlutterMap(resto){
     return FlutterMap(
       options: MapOptions(
         //center: scan.getLatLng(),
-        center: LatLng(40.00, -30.00),
+        center: LatLng(resto.lat,resto.lng),
         zoom: 15
         ),
         layers: [
           _crearMapa(),
-          _crearMarcadores()
+          _crearMarcadores(resto)
         ],
       );
   }
@@ -40,13 +40,13 @@ class MapPage extends StatelessWidget {
         }
     );
   }
-  _crearMarcadores(){
+  _crearMarcadores(resto){
     return MarkerLayerOptions(
       markers: <Marker>[
         Marker(
           width: 100.0,
           height: 100.0,
-          point: LatLng(40.00, -30.00),
+          point: resto.getLatLng(),
           builder: (context) => Container(
             child: Icon(Icons.location_on,
             size: 70.0,

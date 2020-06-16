@@ -7,24 +7,6 @@ class DataSearch extends SearchDelegate{
   String seleccion = '';
 
   final restosProvier = RestosProvider();
-
-  final restos = [
-    'restobar Las rosas',
-    'gola gola',
-    'La chalota restaurant',
-    'Mi hermano y yo',
-    'Asador de Bulnes',
-    'Gastrobar Origen',
-    'Maduk',
-    'Cervezas la Virgen',
-    'La Manuela',
-
-  ];
-  final restosRecientes = [
-    'wapi Grill',
-    'Taberna de moe'
-  ];
-
   @override
   List<Widget> buildActions(BuildContext context) {
       // las acciones de nuestro appbar

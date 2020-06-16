@@ -35,4 +35,19 @@ class RestosProvider {
     //print(restos.items.length);
     return restos.items;
   }
+  Future<List<Resto>> buscarQR( String query) async {
+    final url = Uri.http(_url, 'clients', {
+      'Content-type': 'application/json',
+      'filter[where][_id]': query,
+    });
+
+    final resp = await http.get(url);
+    final decodeData = json.decode(utf8.decode(resp.bodyBytes));
+    final restos = new Restos.fromJsonList(decodeData);
+
+    //print(restos.items.length);
+    return restos.items;
+  }
+
 }
+

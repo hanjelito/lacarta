@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resto/src/models/resto_model.dart';
 
@@ -13,12 +14,14 @@ class CardWidget extends StatefulWidget {
 
 class _CardWidgetState extends State<CardWidget> {
   
+  Position _currentPosition;
 
   @override
   Widget build(BuildContext context) {
     return new ListView.builder(
         itemCount: widget.restos.length,
         itemBuilder: (BuildContext context, int index) {
+          _getCurrentLocation();
           return Column(
             children: <Widget>[
               GestureDetector(
@@ -115,6 +118,7 @@ class _CardWidgetState extends State<CardWidget> {
                       children: <Widget>[
                         SizedBox(height: 5.0),
                         Text(
+                          // widget.restos[index].getLatMeter(_currentPosition.latitude, _currentPosition.longitude),
                           widget.restos[index].getLatMeter(3700000, 0.6626),
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption,
@@ -144,5 +148,18 @@ class _CardWidgetState extends State<CardWidget> {
             ],
           );
         });
+  }
+  _getCurrentLocation() {
+    // final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+    // geolocator
+    //     .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+    //     .then((Position position) {
+    //   setState(() {
+    //     _currentPosition = position;
+    //   });
+    // }).catchError((e) {
+    //   print(e);
+    // });
   }
 }

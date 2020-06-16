@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:resto/src/models/resto_model.dart';
 import 'package:resto/src/widgets/detail/carddetalle_widget.dart';
 import 'package:resto/src/widgets/detail/category_widget.dart';
@@ -25,9 +26,38 @@ class DetallePage extends StatelessWidget {
           
         ],
       ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: _crearBotones(context, resto),
     );
   }
-
+  Widget _crearBotones(context, resto) 
+  {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        FloatingActionButton(
+          heroTag: "btn1",
+          child: Icon(MdiIcons.mapMarkerDistance), 
+          backgroundColor: Colors.red,
+          onPressed: (){
+            Navigator.pushNamed(context, 'mapdetalle',
+            arguments: resto);
+          },
+        ),
+        FloatingActionButton(
+          heroTag: "btn2",
+          child: Icon(MdiIcons.qrcode), 
+          backgroundColor: Colors.red,
+          onPressed: (){
+            Navigator.pushNamed(context, 'qr',
+            arguments: resto);
+          },
+        )
+      ],
+    );
+    
+    
+  }
   Widget _crearAppbar(resto) {
     return SliverAppBar(
       elevation: 2.0,
